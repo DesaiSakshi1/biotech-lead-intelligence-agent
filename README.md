@@ -219,3 +219,42 @@ Lead data is sample/demo data for demonstration purposes
 Email and phone actions may be limited in preview environments
 
 Designed to be extended with real data sources or CRM integrations
+Running the Project Locally
+
+This project is designed to run entirely on a local development environment and does not require any external APIs.
+
+Prerequisites
+
+Ensure the following are installed on your system:
+
+Node.js (v18 or higher recommended)
+
+npm (included with Node.js)
+
+Verify installation:
+
+node -v
+npm -v
+
+Installation Steps
+
+Clone the repository:
+https://github.com/DesaiSakshi1/biotech-lead-intelligence-agent
+cd biotech-lead-intelligence-agent
+Install dependencies:
+
+npm install
+
+Start the Development Server
+
+Run the application locally:
+
+npm run dev
+
+
+Once the server starts, open your browser and navigate to:
+
+http://localhost:3000
+
+
+The BioLeads Pro dashboard should now be running in development mode.
