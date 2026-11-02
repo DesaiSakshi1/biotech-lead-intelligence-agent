@@ -1,260 +1,296 @@
-BioLeads Pro – Biotech Lead Intelligence Dashboard
+# BioLeads Pro
 
-BioLeads Pro is a focused B2B lead intelligence dashboard built to help biotech and pharmaceutical business development teams identify and prioritize high-intent prospects. The system combines structured lead data with a transparent scoring model to support better outreach decisions.
+![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 
-This project was designed from a business development point of view, not just as a technical demo.
+**A lead intelligence dashboard that tells a biotech business development team who to contact first, and why.**
 
-Purpose of the Project
+In biotech sales, not every contact is worth the same effort. BioLeads Pro ranks prospects with a transparent **propensity score from 0 to 100**, broken down into six factors so you can always see *why* a lead scored the way it did. You can search, filter, sort, compare leads side by side, keep a watchlist, contact people in one click, and export your shortlist to CSV.
 
-In biotech sales, not every contact is worth equal effort. BioLeads Pro aims to solve this by:
+The scoring is built around one use case: finding drug-safety and toxicology scientists (for example, people working on liver toxicity) who already use, or are likely to be interested in, 3D models and other modern in-vitro methods.
 
-Collecting structured lead information relevant to life sciences
+It runs entirely in the browser. There is no backend, database, or API key to set up.
 
-Applying a clear, explainable propensity score (0–100)
+> **About the data:** the 65 leads are sample data created for demonstration. Do not use them for real outreach.
 
-Presenting the results in a searchable and usable dashboard
+---
 
-The goal is to help teams focus first on people who are most likely to be interested in advanced biotech solutions.
+## Technologies
 
-Core Features
-Lead Management
+- **Framework:** Next.js 16 (App Router), React 19
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4
+- **UI components:** shadcn/ui on top of Radix UI
+- **Charts:** Recharts
+- **Icons:** Lucide React
+- **State:** React hooks (`useState`, `useMemo`)
+- **Notifications:** shadcn/ui toasts
+- **Analytics:** Vercel Analytics
 
-Preloaded dataset with 65+ sample leads from real biotech and pharma companies
+---
 
-Sortable and searchable lead table
+## Features
 
-Highlighted cards showing the top-scoring leads
+**Lead management**
+- 65 sample leads from biotech and pharma companies
+- Table view and card view, switchable with one click
+- Sortable columns (sorted by rank by default)
+- "Top Prospects" cards showing the first six leads in the current view
+- Watchlist to star priority leads
+- Status badge on each lead (new, contacted, qualified, converted)
 
-Watchlist to mark and track priority prospects
+**Explainable scoring**
+- Every lead has a 0–100 propensity score
+- Click any score to see its breakdown across six factors
+- A built-in "Scoring Guide" panel explains how the score works
+- Leads scoring 70 or above are counted as "High Value"
 
-Side-by-side comparison for selected leads
+**Search and filters**
+- Search by name, company, job title, or location
+- Filter by score range, location, job title, and funding stage
+- "Clear all filters" resets everything in one click
 
-Propensity Scoring System
+**Analytics**
+- Summary cards: total leads, average score, high-value leads, and watchlist size
+- Charts for score distribution, funding stage, and geographic distribution
+- All numbers update live as you filter
 
-Each lead is assigned a score between 0 and 100 based on weighted business signals.
-The scoring logic is intentionally simple and interpretable.
+**Compare and act**
+- Select two or more leads and compare their score breakdowns side by side
+- Contact buttons for email, phone, and LinkedIn
+- Export selected (or all filtered) leads to CSV
 
-Factor	Weight	Explanation
-Role Fit	25%	Seniority and decision-making authority
-Company Intent	20%	Funding stage, hiring activity, expansion
-Technology Match	20%	Alignment with relevant biotech tools
-Location	15%	Presence in major biotech hubs
-Research Activity	10%	Publications or conference presence
-Engagement	10%	Simulated engagement indicators
+### How the score works
 
-Higher scores represent a higher likelihood of interest.
+| Factor | Points | What it looks at |
+|--------|-------:|------------------|
+| Research Activity | 40 | Recent publications on liver toxicity or safety assessment |
+| Role Fit | 30 | Job title mentions toxicology, safety, hepatic, or preclinical work |
+| Company Intent | 20 | Recent funding, active hiring, growth signals |
+| Tech Stack | 15 | Already uses 3D models, NAMs, or in-vitro tools |
+| Location | 10 | Based in a major biotech hub (Boston, Bay Area, Basel, Cambridge UK) |
+| Engagement | 10 | LinkedIn activity, conference or webinar participation |
 
-Filtering and Search
+The in-app Scoring Guide describes the total as 125 points, normalised to 0–100.
 
-Global text search across all lead fields
+---
 
-Score range filter (0–100)
+## What Users Can Do
 
-Filters by location, job title, and funding stage
+1. **Scan** the summary cards and charts to understand the quality of the lead list at a glance.
+2. **Review** the Top Prospects cards to see the best-ranked leads first.
+3. **Search and filter** to narrow the list, for example "Directors in Basel scoring above 80".
+4. **Click a score** to see exactly which factors earned the points.
+5. **Open the Scoring Guide** to learn how every factor is defined.
+6. **Star leads** to build a watchlist; it appears at the bottom of the page.
+7. **Tick checkboxes** on two or more leads, then press **Compare** to see them side by side.
+8. **Reach out** by email, phone, or LinkedIn:
+   - **Email** opens a draft in your mail app (table and compare view) or lets you copy the address (card view)
+   - **Phone** starts a call using your device's dialer
+   - **LinkedIn** opens the profile in a new tab
+9. **Export** your selected leads, or everything currently filtered, as a CSV file.
 
-One-click reset to clear all filters
+---
 
-Analytics Section
+## Keyboard Shortcuts
 
-Score distribution chart to understand lead quality
+BioLeads Pro does not define custom shortcuts. It does support standard keyboard navigation, provided by the Radix UI components it is built on:
 
-Funding stage breakdown of companies
+| Key | Action |
+|-----|--------|
+| `Tab` / `Shift + Tab` | Move between buttons, inputs, checkboxes, and rows |
+| `Enter` / `Space` | Activate a button or toggle a checkbox |
+| `Esc` | Close the Scoring Guide, score breakdown, comparison view, filter panel, or an open dropdown |
+| `←` `→` | Switch between Table and Cards view; adjust the score range slider |
+| `↑` `↓` | Move through dropdown options |
 
-Geographic distribution of leads across biotech hubs
+---
 
-Contact Actions
+## The Process
 
-Email action with copyable address
+Everything flows through one place, `app/page.tsx`, which owns the dashboard's state. Data flows down to the components; user actions flow back up.
 
-Phone action using direct dial
+```mermaid
+flowchart TD
+    A["lib/lead-data.ts<br/>65 sample leads"] --> B["app/page.tsx<br/>holds all state"]
+    B --> C["Search, filters, sorting"]
+    C --> D["filteredLeads"]
+    D --> E["Summary cards"]
+    D --> F["Analytics charts"]
+    D --> G["Top Prospects"]
+    D --> H["Table or card view"]
+    H --> I["Select, star, score breakdown,<br/>compare, contact, export CSV"]
+    I --> B
+```
 
-LinkedIn profile access in a new tab
+1. **Load:** the sample leads are read from `lib/lead-data.ts`.
+2. **Filter and sort:** the page applies the search text, score range, location, job title, funding stage, and sort order to produce `filteredLeads`.
+3. **Display:** the summary cards, charts, Top Prospects, and table or card view all read from `filteredLeads`, so they stay in sync automatically.
+4. **Act:** starring a lead, selecting leads, opening a score breakdown, or comparing leads updates the page state, and the screen updates with it.
+5. **Export:** the CSV is generated in the browser from the selected leads, or from all filtered leads if none are selected.
 
-Data Export
+---
 
-Export filtered or selected leads to CSV
+## How I Built It
 
-Includes full lead details and scoring data
+I kept the app simple on purpose: one page, one data file, and small components that each do one job.
 
-Technology Stack
+- **One source of truth.** `app/page.tsx` holds every piece of state (search, filters, sorting, selection, watchlist). Child components only receive props and report events back.
+- **Derived data with `useMemo`.** The filtered list, top prospects, and watchlist are calculated from the state instead of stored separately, so they can never go out of sync.
+- **A typed data model.** The `Lead` interface in `lib/lead-data.ts` defines every field, including the six-part `scoreBreakdown`, and uses union types for `fundingStage` and `status`.
+- **Explainable by design.** The score is never shown alone: the breakdown modal, the comparison view, and the Scoring Guide all show the same six factors.
+- **Reusable UI.** shadcn/ui and Radix UI provide accessible building blocks (dialogs, sliders, dropdowns, tabs), styled with Tailwind CSS.
 
-Framework: Next.js (App Router)
+<details>
+<summary><b>Project structure</b></summary>
 
-Language: TypeScript
+```
+biotech-lead-intelligence-agent/
+├── README.md
+└── lead-generation-dashboard/
+    ├── app/
+    │   ├── layout.tsx                 # Root layout, fonts, toast container
+    │   ├── page.tsx                   # The dashboard and all of its state
+    │   └── globals.css                # Design tokens and global styles
+    ├── components/
+    │   ├── stats-cards.tsx            # Total, average, high-value, watchlist
+    │   ├── analytics-section.tsx      # Three charts
+    │   ├── filters-section.tsx        # Search, filter panel, export button
+    │   ├── lead-table.tsx             # Sortable table view
+    │   ├── lead-card.tsx              # Card view and contact dialog
+    │   ├── score-breakdown-modal.tsx  # Per-lead score details
+    │   ├── comparison-modal.tsx       # Side-by-side comparison
+    │   ├── scoring-legend.tsx         # "Scoring Guide" side panel
+    │   └── ui/                        # shadcn/ui components
+    ├── hooks/                         # use-toast, use-mobile
+    ├── lib/
+    │   ├── lead-data.ts               # Lead type, 65 sample leads, filter options
+    │   └── utils.ts                   # Helpers
+    ├── public/                        # Icons and images
+    └── package.json
+```
 
-Styling: Tailwind CSS
+</details>
 
-UI Components: shadcn/ui
+<details>
+<summary><b>Lead data model</b></summary>
 
-Charts: Recharts
-
-Icons: Lucide React
-
-State Management: React hooks
-
-Notifications: Sonner
-
-Project Structure
-├── app/
-│   ├── globals.css          # Global styles and design tokens
-│   ├── layout.tsx           # Root layout and providers
-│   └── page.tsx             # Main dashboard
-├── components/
-│   ├── analytics-section.tsx
-│   ├── comparison-modal.tsx
-│   ├── filters-section.tsx
-│   ├── lead-card.tsx
-│   ├── lead-table.tsx
-│   ├── score-breakdown-modal.tsx
-│   ├── scoring-legend.tsx
-│   └── stats-cards.tsx
-├── lib/
-│   ├── lead-data.ts         # Sample lead dataset and types
-│   └── utils.ts             # Utility helpers
-└── README.md
-
-Lead Data Model
+```ts
 interface Lead {
   id: string
+  rank: number
+  score: number                       // 0–100
   name: string
   title: string
   company: string
+  personalLocation: string
+  hqLocation: string
   email: string
   phone: string
   linkedin: string
-  location: string
-  propensityScore: number
+  fundingStage: "Seed" | "Series A" | "Series B" | "Series C" | "Public"
+  lastPublication: string
+  publicationTitle: string
+  techStack: string[]
+  recentActivity: string[]
   scoreBreakdown: {
-    roleFit: number
-    companyIntent: number
-    techStack: number
-    location: number
-    researchActivity: number
-    engagement: number
+    roleFit: number                   // max 30
+    companyIntent: number             // max 20
+    technographic: number             // max 15
+    location: number                  // max 10
+    scientificIntent: number          // max 40
+    engagement: number                // max 10
   }
-  lastActivity: string
-  fundingStage: string
-  employeeCount: string
-  techStackTags: string[]
-  recentPublication: string
+  isWatched: boolean
+  status: "new" | "contacted" | "qualified" | "converted"
 }
+```
 
-Key Metrics Shown
+</details>
 
-Total number of leads
+---
 
-Count of high-intent leads (score ≥ 70)
+## What I Learned
 
-Average propensity score
+> Edit these so they sound like you. They are based on how the project is built.
 
-Number of leads in the watchlist
+- **Keep state in one place.** Owning all state in a single parent and deriving everything else from it made the filters, charts, and cards stay consistent with very little code.
+- **Explainability builds trust.** A score is only useful to a sales team if they can see why a lead ranked high, so the breakdown became a core feature rather than an extra.
+- **Design from the user's point of view.** Thinking like a business development rep shaped decisions such as the watchlist, comparison view, and one-click contact actions.
+- **Types catch mistakes early.** Defining the `Lead` interface first made every component easier to write and check.
+- **Accessible components save time.** Building on Radix UI gave keyboard navigation and focus handling without writing it by hand.
 
-Targeted Biotech Regions
+---
 
-The dataset focuses on established biotech clusters, including:
+## How It Could Be Improved
 
-Cambridge, MA
+- **Calculate scores instead of storing them.** Scores and breakdowns are currently typed into the dataset by hand. A scoring function that takes raw signals (title, funding, publications, location) and returns the score would make the model real and testable.
+- **Define the scoring weights once.** The maximum points per factor are repeated in `scoring-legend.tsx`, `score-breakdown-modal.tsx`, and `comparison-modal.tsx`. One shared configuration would remove the duplication.
+- **Save user actions.** The watchlist and selections reset on page refresh. Saving them (local storage first, a database later) would fix that, and the `status` field could become editable.
+- **Connect real data.** Add a CSV import, a CRM integration, or an API as the lead source.
+- **Make the sample data more varied.** Almost all current leads are at public companies, so the funding-stage filter and chart show little variation.
+- **Finish dark mode.** A theme provider and dark colour tokens exist, but there is no toggle yet.
+- **Add tests and tighten the build.** Add unit tests for filtering and scoring, and consider removing `ignoreBuildErrors` from `next.config.mjs`.
+- **Handle larger lists.** Add pagination or virtualised rows once there are hundreds of leads.
 
-South San Francisco, CA
+---
 
-San Diego, CA
+## How to Run
 
-Basel, Switzerland
+**Prerequisites**
+- Node.js **20.9 or higher** (required by Next.js 16)
+- npm (comes with Node.js)
 
-Cambridge, UK
+Check your versions:
 
-Munich, Germany
-
-Tokyo, Japan
-
-Dublin, Ireland
-
-Paris, France
-
-Stockholm, Sweden
-
-How to Use the Dashboard
-Viewing Leads
-
-Browse all leads in the table
-
-Sort columns as needed
-
-Review top leads in the summary cards
-
-Filtering
-
-Use the search bar for quick lookups
-
-Adjust score range to narrow focus
-
-Filter by role, location, or funding stage
-
-Comparing Leads
-
-Select multiple leads
-
-Open comparison view
-
-Review differences side by side
-
-Exporting
-
-Apply filters or selections
-
-Export data as a CSV file
-
-Customization
-
-Add leads: Update lib/lead-data.ts
-
-Adjust scoring: Modify weights in scoring-legend.tsx
-
-Styling: Change design tokens in globals.css
-
-Notes
-
-Lead data is sample/demo data for demonstration purposes
-
-Email and phone actions may be limited in preview environments
-
-Designed to be extended with real data sources or CRM integrations
-Running the Project Locally
-
-This project is designed to run entirely on a local development environment and does not require any external APIs.
-
-Prerequisites
-
-Ensure the following are installed on your system:
-
-Node.js (v18 or higher recommended)
-
-npm (included with Node.js)
-
-Verify installation:
-
+```bash
 node -v
 npm -v
+```
 
-Installation Steps
+**1. Clone the repository**
 
-Clone the repository:
-https://github.com/DesaiSakshi1/biotech-lead-intelligence-agent
-cd biotech-lead-intelligence-agent
-Install dependencies:
+```bash
+git clone https://github.com/DesaiSakshi1/biotech-lead-intelligence-agent.git
+cd biotech-lead-intelligence-agent/lead-generation-dashboard
+```
 
+The app lives in the `lead-generation-dashboard` folder, so run every command below from there.
+
+**2. Install dependencies**
+
+```bash
 npm install
+```
 
-Start the Development Server
+**3. Start the development server**
 
-Run the application locally:
-
+```bash
 npm run dev
+```
 
+**4. Open the app** at [http://localhost:3000](http://localhost:3000).
 
-Once the server starts, open your browser and navigate to:
+An internet connection is needed the first time so the Inter font can be downloaded.
 
-http://localhost:3000
+**Other commands**
 
+| Command | What it does |
+|---------|--------------|
+| `npm run build` | Create a production build |
+| `npm run start` | Serve the production build |
 
-The BioLeads Pro dashboard should now be running in development mode.
+**Adding or changing leads**
+- Add an object to the `sampleLeads` array in `lib/lead-data.ts`, following the `Lead` interface above.
+- Scores and breakdowns are entered by hand. If you change the maximum points for a factor, update it in `scoring-legend.tsx`, `score-breakdown-modal.tsx`, and `comparison-modal.tsx`.
+- Colours and design tokens live in `app/globals.css`.
+
+---
+
+## Demo Video
+
+[![Watch the demo](YOUR_THUMBNAIL_IMAGE_URL)](YOUR_VIDEO_URL)
+
+_A short walkthrough: reading the dashboard, filtering leads, opening a score breakdown, comparing leads, and exporting to CSV._
